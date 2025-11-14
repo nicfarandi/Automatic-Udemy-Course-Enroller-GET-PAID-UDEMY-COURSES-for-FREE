@@ -68,7 +68,8 @@ def determine_if_scraper_enabled(
     discudemy_enabled: bool,
     coursevania_enabled: bool,
     realdiscount_enabled: bool,
-) -> Tuple[bool, bool, bool, bool, bool, bool]:
+    couponscorpion_enabled: bool,  # ADD THIS
+) -> Tuple[bool, bool, bool, bool, bool, bool, bool]:  # ADD ONE MORE bool
     """
     Determine what scrapers should be enabled and disabled.
 
@@ -81,6 +82,7 @@ def determine_if_scraper_enabled(
         and not discudemy_enabled
         and not coursevania_enabled
         and not realdiscount_enabled
+        and not couponscorpion_enabled  # ADD THIS
     ):
         # Set all to True
         (
@@ -90,7 +92,8 @@ def determine_if_scraper_enabled(
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
-        ) = (True, True, True, True, True, True)
+            couponscorpion_enabled,  # ADD THIS
+        ) = (True, True, True, True, True, True, True)  # ADD ONE MORE True
 
     return (
         idownloadcoupon_enabled,
@@ -99,6 +102,7 @@ def determine_if_scraper_enabled(
         discudemy_enabled,
         coursevania_enabled,
         realdiscount_enabled,
+        couponscorpion_enabled,  # ADD THIS
     )
 
 
@@ -110,6 +114,7 @@ def run(
     discudemy_enabled: bool,
     coursevania_enabled: bool,
     realdiscount_enabled: bool,
+    couponscorpion_enabled: bool,  # ADD THIS
     max_pages: Union[int, None],
     delete_settings: bool,
     delete_cookie: bool,
@@ -124,6 +129,7 @@ def run(
     :param bool discudemy_enabled:
     :param bool coursevania_enabled:
     :param bool realdiscount_enabled:
+    :param bool couponscorpion_enabled:  # ADD THIS
     :param int max_pages: Max pages to scrape from sites (if pagination exists)
     :param bool delete_settings: Determines if we should delete old settings file
     :param bool delete_cookie: Determines if we should delete the cookie file
@@ -141,6 +147,7 @@ def run(
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
+            couponscorpion_enabled,  # ADD THIS
             max_pages,
         )
     else:
@@ -152,6 +159,7 @@ def run(
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
+            couponscorpion_enabled,  # ADD THIS
             max_pages,
         )
 
@@ -194,6 +202,12 @@ def parse_args() -> Namespace:
         action="store_true",
         default=False,
         help="Run discudemy scraper",
+    )
+    parser.add_argument(
+        "--couponscorpion",
+        action="store_true",
+        default=False,
+        help="Run couponscorpion scraper",
     )
     parser.add_argument(
         "--coursevania",
@@ -252,6 +266,7 @@ def main():
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
+            couponscorpion_enabled,  # ADD THIS
         ) = determine_if_scraper_enabled(
             args.idownloadcoupon,
             args.freebiesglobal,
@@ -259,6 +274,7 @@ def main():
             args.discudemy,
             args.coursevania,
             args.realdiscount,
+            args.couponscorpion,  # ADD THIS
         )
         run(
             args.browser,
@@ -268,6 +284,7 @@ def main():
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
+            couponscorpion_enabled,  # ADD THIS
             args.max_pages,
             args.delete_settings,
             args.delete_cookie,

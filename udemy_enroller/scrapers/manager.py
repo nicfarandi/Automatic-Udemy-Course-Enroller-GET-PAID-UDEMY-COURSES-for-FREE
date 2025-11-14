@@ -9,6 +9,7 @@ from udemy_enroller.scrapers.freebiesglobal import FreebiesglobalScraper
 from udemy_enroller.scrapers.idownloadcoupon import IDownloadCouponScraper
 from udemy_enroller.scrapers.realdiscount import RealDiscountScraper
 from udemy_enroller.scrapers.tutorialbar import TutorialBarScraper
+from udemy_enroller.scrapers.couponscorpion import CouponScorpionScraper  # ADD THIS
 
 
 class ScraperManager:
@@ -22,6 +23,7 @@ class ScraperManager:
         discudemy_enabled,
         coursevania_enabled,
         realdiscount_enabled,
+        couponscorpion_enabled,  # ADD THIS
         max_pages,
     ):
         """Initialize."""
@@ -44,6 +46,9 @@ class ScraperManager:
         self.realdiscount_scraper = RealDiscountScraper(
             realdiscount_enabled, max_pages=max_pages
         )
+        self.couponscorpion_scraper = CouponScorpionScraper(  # ADD THIS
+            couponscorpion_enabled, max_pages=max_pages
+        )
         self._scrapers = (
             self.idownloadcoupons_scraper,
             self.freebiesglobal_scraper,
@@ -51,6 +56,7 @@ class ScraperManager:
             self.discudemy_scraper,
             self.coursevania_scraper,
             self.realdiscount_scraper,
+            self.couponscorpion_scraper,  # ADD THIS
         )
 
     async def run(self) -> typing.List[str]:

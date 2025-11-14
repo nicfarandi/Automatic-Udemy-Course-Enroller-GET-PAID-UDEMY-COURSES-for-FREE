@@ -75,6 +75,7 @@ def redeem_courses(
     discudemy_enabled: bool,
     coursevania_enabled: bool,
     realdiscount_enabled: bool,
+    couponscorpion_enabled: bool,  # ADD THIS
     max_pages: Union[int, None],
 ) -> None:
     """
@@ -87,6 +88,7 @@ def redeem_courses(
     :param bool discudemy_enabled: Boolean signifying if discudemy scraper should run
     :param bool coursevania_enabled: Boolean signifying if coursevania scraper should run
     :param bool realdiscount_enabled: Boolean signifying if realdiscount scraper should run
+    :param bool couponscorpion_enabled: Boolean signifying if couponscorpion scraper should run  # ADD THIS
     :param int max_pages: Max pages to scrape from sites (if pagination exists)
     :return:
     """
@@ -98,6 +100,7 @@ def redeem_courses(
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
+            couponscorpion_enabled,  # ADD THIS
             max_pages,
         )
         _redeem_courses(settings, scrapers)
@@ -173,6 +176,7 @@ def redeem_courses_ui(
     discudemy_enabled: bool,
     coursevania_enabled: bool,
     realdiscount_enabled: bool,
+    couponscorpion_enabled: bool,  # ADD THIS
     max_pages: Union[int, None],
 ) -> None:
     """
@@ -186,6 +190,7 @@ def redeem_courses_ui(
     :param bool discudemy_enabled: Boolean signifying if discudemy scraper should run
     :param bool coursevania_enabled: Boolean signifying if coursevania scraper should run
     :param bool realdiscount_enabled: Boolean signifying if realdiscount scraper should run
+    :param bool couponscorpion_enabled: Boolean signifying if couponscorpion scraper should run  # ADD THIS
     :param int max_pages: Max pages to scrape from sites (if pagination exists)
     :return:
     """
@@ -197,6 +202,7 @@ def redeem_courses_ui(
             discudemy_enabled,
             coursevania_enabled,
             realdiscount_enabled,
+            couponscorpion_enabled,  # ADD THIS
             max_pages,
         )
         _redeem_courses_ui(driver, settings, scrapers)
